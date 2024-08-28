@@ -1,6 +1,8 @@
-import { useState } from 'react'
-import {sampleData1} from './data/sample1'
+import {useState} from 'react'
 import EditorWrapper from './components/EditorWrapper'
+import Editor from './components/Editor'
+import {sampleData2} from './data/sample2'
+import {sampleData1} from './data/sample1'
 
 
 function App() {
@@ -9,14 +11,9 @@ function App() {
   return (
     <main className='h-screen w-full flex'>
       <div className='h-full w-[260px] shadow-sm border-r'></div>
-      <div className='h-full flex-1 bg-[#f0f0f0] overflow-auto'>
-        {/* <NodeEditor data={sampleData1} /> */}
         <EditorWrapper>
-          <div className='w-[75%] min-h-[1300px] mx-auto bg-white shadow-md'>
-            
-          </div>
-        </EditorWrapper>
-      </div>
+        <Editor nodes={sampleData1} />
+      </EditorWrapper>
       <div className='h-full w-[260px] shadow-sm border-l'></div>
     </main>
   )
