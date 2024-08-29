@@ -6,15 +6,14 @@ import {EditorContext} from '../contexts/EditorContext'
 
 function PropertyControlPanel () {
   const {nodes, getNode, updateNode} = useContext(NodeContext)
-  const {activeNodeId} = useContext(EditorContext)
+  const {activeNodeId, activeNodePath} = useContext(EditorContext)
 
   const targetNodeValue = useMemo((() => {
-    if(!activeNodeId) return null
-    return getNode(activeNodeId)
-  }), [activeNodeId, getNode])
+    if(!activeNodePath) return null
+    return getNode(activeNodePath)
+  }), [activeNodePath, getNode])
 
-  // const targetNodeValue = getNode(activeNodeId)
-  // console.log('cp')
+
   useEffect(() => {
     console.log(targetNodeValue)
     console.log((parseFloat(targetNodeValue?.style.borderWidth?.slice(0, -2)) * 16))

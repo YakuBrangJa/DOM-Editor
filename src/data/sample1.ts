@@ -3,7 +3,6 @@ import {EditorNode} from "../types/node.types";
 export const sampleData1: EditorNode[] = [
   {
     id: '0',
-    path: '0',
     type: 'section',
     layout: {
       type: "row",
@@ -13,7 +12,6 @@ export const sampleData1: EditorNode[] = [
     children: [
       {
         id: '0.0',
-        path: '0.0',
         type: 'block',
         layout: {
           type: "column",
@@ -28,7 +26,6 @@ export const sampleData1: EditorNode[] = [
         children: [
           {
             id: '0.0.0',
-            path: '0.0.0',
             type: 'content',
             content: 'Landing Page Builder',
             contentType: 'text',
@@ -41,7 +38,6 @@ export const sampleData1: EditorNode[] = [
           },
           {
             id: '0.0.1',
-            path: '0.0.1',
             type: 'content',
             content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur exercitationem earum dolorum placeat',
             contentType: 'text',
@@ -54,7 +50,6 @@ export const sampleData1: EditorNode[] = [
           },
           {
             id: '0.0.2',
-            path: '0.0.2',
             type: 'content',
             content: 'Get started',
             contentType: 'button',
@@ -77,7 +72,6 @@ export const sampleData1: EditorNode[] = [
       },
       {
         id: '0.1',
-        path: '0.1',
         type: 'block',
         layout: {
           type: null
@@ -91,7 +85,6 @@ export const sampleData1: EditorNode[] = [
   },
   {
     id: '1',
-    path: '1',
     type: 'section',
     layout: {
       type: "row",
@@ -103,7 +96,6 @@ export const sampleData1: EditorNode[] = [
     children: [
       {
         id: '1.0',
-        path: '1.0',
         type: 'block',
         layout: {
           type: "column",
@@ -120,7 +112,6 @@ export const sampleData1: EditorNode[] = [
         children: [
           {
             id: '1.0.0',
-            path: '1.0.0',
             type: 'content',
             content: 'Ship site with style',
             contentType: 'text',
@@ -133,7 +124,6 @@ export const sampleData1: EditorNode[] = [
           },
           {
             id: '1.0.1',
-            path: '1.0.1',
             type: 'content',
             content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur',
             contentType: 'text',
@@ -149,7 +139,6 @@ export const sampleData1: EditorNode[] = [
           },
           {
             id: '1.0.2',
-            path: '1.0.2',
             type: 'content',
             content: 'Learn more',
             contentType: 'button',
@@ -174,7 +163,6 @@ export const sampleData1: EditorNode[] = [
   },
   {
     id: '2',
-    path: '2',
     type: 'section',
     layout: {
       type: 'column',
@@ -185,7 +173,6 @@ export const sampleData1: EditorNode[] = [
     children: [
       {
         id: '2.0',
-        path: '2.0',
         type: 'block',
         layout: {
           type: null,
@@ -194,7 +181,6 @@ export const sampleData1: EditorNode[] = [
         children: [
           // {
           //   id: '2.0.0',
-          //   path: '2.0.0',
           //   type: 'block',
           //   layout: {
           //     type: null,
@@ -204,7 +190,6 @@ export const sampleData1: EditorNode[] = [
           // },
           // {
           //   id: '2.0.1',
-          //   path: '2.0.1',
           //   type: 'block',
           //   layout: {
           //     type: null,
@@ -214,7 +199,6 @@ export const sampleData1: EditorNode[] = [
           // },
           // {
           //   id: '2.0.2',
-          //   path: '2.0.2',
           //   type: 'block',
           //   layout: {
           //     type: null,
@@ -226,7 +210,6 @@ export const sampleData1: EditorNode[] = [
       },
       {
         id: '2.1',
-        path: '2.1',
         type: 'block',
         layout: {
           type: null,
@@ -236,7 +219,6 @@ export const sampleData1: EditorNode[] = [
       },
       {
         id: '2.2',
-        path: '2.2',
         type: 'block',
         layout: {
           type: null,

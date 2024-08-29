@@ -9,7 +9,6 @@ interface Props {
 }
 
 export function ColorPicker ({label, value, onChange}: Props) {
-  // const [colorValue, setColorValue] = useState<string | undefined>(value)
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   const pickerRef = useRef(null)
@@ -19,15 +18,7 @@ export function ColorPicker ({label, value, onChange}: Props) {
     if(onChange) {
       onChange(color)
     }
-
-    // if(!value) {
-    //   setColorValue(color)
-    // }
   }
-
-  // useEffect(() => {
-  //   console.log(colorValue)
-  // }, [colorValue])
 
   return (
     <div className='flex items-center justify-between mt-3 text-[0.8rem] relative' ref={pickerRef}>

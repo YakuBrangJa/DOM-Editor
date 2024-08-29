@@ -6,28 +6,14 @@ import {EditorContext} from '../contexts/EditorContext';
 const Editor = () => {
 
   const {nodes} = useContext(NodeContext)
-  const {activeNodeId, activeParentNodeId, setActiveNodeId, setActiveParentNodeId} = useContext(EditorContext)
+  const {activeNodeId, activeParentNodeId, setActiveNodeId, setActiveParentNodeId, setActiveNodePath} = useContext(EditorContext)
 
-  const handleNodeClick = (id, parentId) => {
+  const handleNodeClick = (id: string, parentId: string, path: string) => {
     setActiveNodeId(id);
     setActiveParentNodeId(parentId)
+    setActiveNodePath(path)
   };
 
-  useEffect(() => {
-    const path = '0.1'
-    const pathCoordinates = path.split('.').map(Number)
-
-    // pathCoordinates.reduce((prev,cur) => {
-    //   return nodes[Number(cur)]
-    // })
-    let currentNode = nodes;
-    pathCoordinates.map((segment, i) => {
-      const nodeList = i === 0 ? nodes : (currentNode.children || [])
-      currentNode = nodeList[segment]
-
-    })
-
-  }, [nodes])
 
   const style = (node: EditorNode, parentType: 'block' | 'column' | 'row' | 'grid' | null): React.CSSProperties => {
     const result: React.CSSProperties = {...node.style}
@@ -36,7 +22,7 @@ const Editor = () => {
     if(node.type !== 'content' && !node.layout.type) {
       result.backgroundColor = '#0099ff33'
       result.minHeight = parentType === 'column' ? '7em' : '15em'
-      result.border = activeNodeId !== node.id ? '1px dashed #0099ff99' : ''
+      result.border = activeNodeId !== node.id ? '1px dashed #0099ff66' : ''
     }
 
     if(node.type ===
@@ -56,8 +42,10 @@ const Editor = () => {
 
     return result
   }
-
-  const renderNode = (node: EditorNode, parent?: {
+  /**
+   * Recursive Rendering Function
+   */
+  const renderNode = (node: EditorNode, path: string, parent?: {
     type: 'block' | 'column' | 'row' | 'grid' | null
     id: string
   }) => (
@@ -66,7 +54,7 @@ const Editor = () => {
       id={node.id}
       onClick={(e) => {
         e.stopPropagation()
-        handleNodeClick(node.id, parent?.id)
+        handleNodeClick(node.id, parent?.id, path)
       }}
       className="text-inherit relative cursor-default [&:hover:not(:has(div:hover))]:outline outline-[1px] outline-[#0099ff] "
       style={{
@@ -90,7 +78,8 @@ const Editor = () => {
         </>
       )
         :
-        node.children.map(child => renderNode(child, {
+        // Rendering children (recursive calling)
+        node.children.map((child, idx) => renderNode(child, path + '.' + idx, {
           type: node.layout.type,
           id: node.id
         }))}
@@ -108,7 +97,7 @@ const Editor = () => {
   return (
     <div className='w-[50em] min-h-[80em] mx-auto bg-white shadow-md'>
       <div id="editor">
-        {nodes.map(node => renderNode(node))}
+        {nodes.map((node, idx) => renderNode(node, idx.toString()))}
       </div>
     </div>
   );

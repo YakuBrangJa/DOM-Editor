@@ -4,7 +4,6 @@ export type EditorNodeStyle = React.CSSProperties & {
 
 export type BaseEditorNode = {
   id: string;
-  path: string;
   style: EditorNodeStyle;
 };
 
