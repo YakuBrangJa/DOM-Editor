@@ -19,6 +19,7 @@ export type ContentNode = BaseEditorNode & {
   content: string;
   contentType: 'text' | 'image' | 'button' | 'table';
   contentStyle: React.CSSProperties
+  children?: EditorNode[]
 };
 
 export type EditorNode = ContainerNode | ContentNode;

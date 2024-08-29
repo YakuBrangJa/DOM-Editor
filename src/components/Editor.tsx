@@ -1,14 +1,12 @@
-import {useEffect, useState} from 'react';
+import {useContext, useEffect} from 'react';
 import {EditorNode} from '../types/node.types';
+import {NodeContext} from '../contexts/NodeContext';
+import {EditorContext} from '../contexts/EditorContext';
 
-type Props = {
-  nodes: EditorNode[]
-}
+const Editor = () => {
 
-const Editor = ({nodes}: Props) => {
-// const [nodes, setNodes] = useState(data);
-  const [activeNodeId, setActiveNodeId] = useState(null);
-  const [activeParentNodeId, setActiveParentNodeId] = useState(null);
+  const {nodes} = useContext(NodeContext)
+  const {activeNodeId, activeParentNodeId, setActiveNodeId, setActiveParentNodeId} = useContext(EditorContext)
 
   const handleNodeClick = (id, parentId) => {
     setActiveNodeId(id);
@@ -16,8 +14,8 @@ const Editor = ({nodes}: Props) => {
   };
 
   useEffect(() => {
-    let path = '0.1'
-    let pathCoordinates = path.split('.').map(Number)
+    const path = '0.1'
+    const pathCoordinates = path.split('.').map(Number)
 
     // pathCoordinates.reduce((prev,cur) => {
     //   return nodes[Number(cur)]
@@ -31,103 +29,8 @@ const Editor = ({nodes}: Props) => {
 
   }, [nodes])
 
-  useEffect(() => {
-    type TestNode = {
-      type: string;
-      path: string;
-      children: TestNode[];
-    };
-
-    const test: TestNode[] = [
-      {
-        type: 'block',
-        path: '0',
-        children: [
-          {
-            type: 'block',
-            path: '0.0',
-            children: []
-          },
-          {
-            type: 'block',
-            path: '0.1',
-            children: [
-              {
-                type: 'block',
-                path: '0.1.0',
-                children: []
-              }
-            ]
-          },
-          {
-            type: 'block',
-            path: '0.2',
-            children: []
-          }
-        ]
-      }
-    ];
-
-    function updateNodeByPath (
-      nodes: TestNode[],
-      path: string,
-      newData: Partial<TestNode>
-    ): boolean {
-      const segments = path.split('.').map(Number);
-
-      let currentNode: TestNode | null = null;
-
-      for(let i = 0; i < segments.length; i++) {
-        const segment = segments[i];
-        const nodeList = i === 0 ? nodes : currentNode?.children || [];
-        currentNode = nodeList[segment];
-
-        if(!currentNode) {
-          return false; // Path is invalid
-        }
-      }
-
-      // Directly update the target node
-      Object.assign(currentNode, {
-        type: 'updated'
-      });
-
-      return true; // Update successful
-    }
-
-    // Example usage
-    const updated = updateNodeByPath(test, '0.1', {type: 'updated-block'});
-
-    if(updated) {
-      console.log('Node updated successfully:', test);
-    } else {
-      console.log('Node not found or update failed');
-    }
-
-  }, [])
-  // const updateNodeStyle = (id, property, value) => {
-  //   const updateStyles = (node) => {
-  //     if(node.id === id) {
-  //       return {
-  //         ...node,
-  //         style: {
-  //           ...node.style,
-  //           [property]: value,
-  //         }
-  //       };
-  //     }
-
-  //     return {
-  //       ...node,
-  //       children: node.children.map(updateStyles),
-  //     };
-  //   };
-
-  //   setNodes(updateStyles(nodes));
-  // };
-
   const style = (node: EditorNode, parentType: 'block' | 'column' | 'row' | 'grid' | null): React.CSSProperties => {
-    let result: React.CSSProperties = node.style
+    const result: React.CSSProperties = {...node.style}
 
     // Render placeholder block
     if(node.type !== 'content' && !node.layout.type) {

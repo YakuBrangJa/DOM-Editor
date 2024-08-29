@@ -99,7 +99,6 @@ export const sampleData1: EditorNode[] = [
     },
     style: {
       height: '19em',
-      backgroundColor: '#00A35C',
     },
     children: [
       {
@@ -116,6 +115,7 @@ export const sampleData1: EditorNode[] = [
           paddingBottom: "4em",
           paddingLeft: "4em",
           contentAlign: 'center',
+          backgroundColor: '#00A35C',
         },
         children: [
           {
