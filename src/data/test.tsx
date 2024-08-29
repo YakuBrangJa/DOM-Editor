@@ -1,48 +1,84 @@
-import React, {useState} from 'react'
+// import React, {useState} from 'react'
 
 
-const data = [
+// const data = [
+//   {
+//     id: '1',
+//     name: 'name1'
+//   },
+//   {
+//     id: '2',
+//     name: 'name2'
+//   },
+//   {
+//     id: '3',
+//     name: 'name3'
+//   },
+//   {
+//     id: '4',
+//     name: 'name5'
+//   },
+// ]
+// function test () {
+//   const [todoList, setTodoList] = useState(data)
+
+//   const findItemById = (id: string) => {
+//     return todoList.find(item => item.id === id)
+//   }
+
+//   const findItemByIndex = (index: number) => {
+//     return todoList[index]
+//   }
+
+
+//   return (
+//     <div>
+//       {todoList.map((item, index) => (
+//         <li key={item.id}
+//           onClick={() => {
+//             findItemById(item.id)
+//             findItemByIndex(index)
+//           }}
+//         >{item.name}</li>
+//       ))}
+//     </div>
+//   )
+// }
+
+// export default test
+
+const pageData = [
   {
     id: '1',
-    name: 'name1'
+    type: 'section',
+    children: [
+      {
+        id: '1',
+        type: 'block',
+        children: [
+          {
+            id: '1',
+            type: 'block',
+            children: []
+          },
+          {
+            id: '1',
+            type: 'block',
+            children: []
+          }
+        ]
+      }
+    ]
   },
   {
-    id: '2',
-    name: 'name2'
-  },
-  {
-    id: '3',
-    name: 'name3'
-  },
-  {
-    id: '4',
-    name: 'name5'
-  },
+    id: '1',
+    type: 'section',
+    children: []
+  }
 ]
-function test () {
-  const [todoList, setTodoList] = useState(data)
 
-  const findItemById = (id: string) => {
-    return todoList.find(item => item.id === id)
-  }
-
-  const findItemByIndex = (index: number) => {
-    return todoList[index]
-  }
-
-
-  return (
-    <div>
-      {todoList.map((item, index) => (
-        <li key={item.id}
-          onClick={() => {
-            findItemById(item.id)
-            findItemByIndex(index)
-          }}
-        >{item.name}</li>
-      ))}
-    </div>
-  )
+const node = {
+  id: '1',
+  type: 'block',
+  children: []
 }
-
-export default test

@@ -22,6 +22,7 @@ export const sampleData1: EditorNode[] = [
           paddingRight: "2em",
           paddingBottom: "4em",
           paddingLeft: "4em",
+          // backgroundColor: '#453434'
         },
         children: [
           {

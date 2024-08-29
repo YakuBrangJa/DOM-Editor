@@ -7,7 +7,7 @@ function App () {
   return (
     <main className='h-screen w-full flex'>
       <div className='h-full w-[260px] shadow-sm border-r'></div>
-        <EditorWrapper>
+      <EditorWrapper>
         <Editor />
       </EditorWrapper>
       <div className='h-full w-[260px] shadow-sm border-l'>

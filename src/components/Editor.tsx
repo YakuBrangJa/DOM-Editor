@@ -20,7 +20,7 @@ const Editor = () => {
 
     // Render placeholder block
     if(node.type !== 'content' && !node.layout.type) {
-      result.backgroundColor = '#0099ff33'
+      result.backgroundColor = '#0099ff29'
       result.minHeight = parentType === 'column' ? '7em' : '15em'
       result.border = activeNodeId !== node.id ? '1px dashed #0099ff66' : ''
     }
